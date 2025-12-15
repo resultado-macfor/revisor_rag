@@ -2,7 +2,7 @@ import google.generativeai as genai
 import os
 import textwrap
 from typing import Optional
-from dotenv import load_dotenv
+
 
 # -----------------------------------------------------------
 # I. CHAVES E CONFIGURAÇÕES (Do seu código anexo)

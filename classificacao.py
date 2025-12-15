@@ -5,11 +5,22 @@ from typing import Optional
 
 
 
-# ❌ REMOVA A CHAVE EM TEXTO CLARO AQUI!
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-# Chave do Gemini (Google Generative AI)
-# Outras chaves que não são necessárias para este passo, mas mantidas para referência:
-# Inicializa o cliente Gemini
+if GEMINI_API_KEY:
+    try:
+        genai.configure(api_key=GEMINI_API_KEY)
+        # Definindo o modelo como no seu notebook
+        model = genai.GenerativeModel('gemini-2.0-flash')
+        print("✅ Gemini configurado com sucesso.")
+    except Exception as e:
+        print(f"❌ ERRO: Falha ao configurar a API do Gemini. Erro: {e}")
+        model = None
+else:
+    print("❌ ERRO: Variável GEMINI_API_KEY não encontrada no ambiente.")
+    model = None
+
+
+
 try:
     genai.configure(api_key=GEMINI_API_KEY)
     # Definindo o modelo como no seu notebook

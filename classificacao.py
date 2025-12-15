@@ -4,10 +4,6 @@ import textwrap
 from typing import Optional
 
 
-# -----------------------------------------------------------
-# I. CHAVES E CONFIGURAÇÕES (Do seu código anexo)
-# -----------------------------------------------------------
-load_dotenv() # Carrega as variáveis do arquivo .env localmente
 
 # ❌ REMOVA A CHAVE EM TEXTO CLARO AQUI!
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")

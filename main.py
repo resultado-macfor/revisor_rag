@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 # 🚨 IMPORTAÇÃO ATUALIZADA: Agora importa reescrever_revisor E ajuste_incremental
 from revisor import reescrever_revisor, get_embedding, ajuste_incremental 
 

@@ -3,6 +3,15 @@ import os
 import json
 import hashlib
 from typing import List, Dict, Optional
+import sys
+
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+try:
+    from revisor import reescrever_revisor, get_embedding, ajuste_incremental
+except ImportError as e:
+    st.error(f"❌ ERRO DE IMPORTAÇÃO: {e}. Verifique se todos os arquivos estão no diretório correto.")
+    st.stop()
 
 
 # 🚨 IMPORTAÇÃO DOS MÓDULOS DE LÓGICA
@@ -25,6 +34,21 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 if not OPENAI_API_KEY:
     print("❌ ATENÇÃO: OPENAI_API_KEY não está definida.")
+
+
+
+if 'secrets' in dir(st) and st.secrets:
+    try:
+        # Carregar todas as secrets
+        for key in ['OPENAI_API_KEY', 'GEMINI_API_KEY', 'ASTRA_DB_APPLICATION_TOKEN', 
+                    'ASTRA_DB_API_ENDPOINT', 'ASTRA_DB_NAMESPACE']:
+            if key in st.secrets:
+                os.environ[key] = st.secrets[key]
+    except Exception as e:
+        st.error(f"Erro ao carregar secrets: {e}")
+else:
+    st.warning("⚠️ Secrets não encontrados. Usando variáveis de ambiente existentes.")
+    
 
 # -----------------------------------------------------------
 # II. CLASSE LLMClient (Para gerar a correção)

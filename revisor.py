@@ -10,8 +10,9 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 try:
     from revisor import reescrever_revisor, get_embedding, ajuste_incremental
 except ImportError as e:
-    st.error(f"❌ ERRO DE IMPORTAÇÃO: {e}. Verifique se todos os arquivos estão no diretório correto.")
-    st.stop()
+    print(f"❌ ERRO DE IMPORTAÇÃO: {e}. Verifique se todos os arquivos estão no diretório correto.")
+
+
 
 
 # 🚨 IMPORTAÇÃO DOS MÓDULOS DE LÓGICA
@@ -24,7 +25,9 @@ except ImportError as e:
     print(f"❌ ERRO: Verifique se os arquivos classificacao.py e conexao_banco.py estão no diretório. Erro: {e}")
     # Abortar se as dependências não puderem ser carregadas
     exit()
-
+    classificar_texto = None
+    AstraDBClient = None
+    astra_client = None
 
 
 

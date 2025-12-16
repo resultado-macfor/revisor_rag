@@ -1,6 +1,11 @@
 import streamlit as st
 import os
-# 🚨 IMPORTAÇÃO ATUALIZADA: Agora importa reescrever_revisor E ajuste_incremental
+import openai
+import os
+import json
+import hashlib
+from typing import List, Dict, Optional
+import sys
 from revisor import reescrever_revisor, get_embedding, ajuste_incremental 
 if st.secrets:
     for key, value in st.secrets.items():
